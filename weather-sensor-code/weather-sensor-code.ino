@@ -1,17 +1,17 @@
 #define BLYNK_TEMPLATE_ID "TMPL2zwnUm09s"
-#define BLYNK_TEMPLATE_NAME "ESP8266 Weather Sensor"
+#define BLYNK_TEMPLATE_NAME "Siddharth's Weather Sensor"
 #define BLYNK_AUTH_TOKEN "5ca-KS2RpCeI9pER22G_Y5BnQ6TPc9Rm"
 
 // including the required libraries
-#include <ESP8266WiFi.h> // for the ESP8266 module
-#include <BlynkSimpleEsp8266.h> // for blynk cloud stream
+#include <WiFi.h> // for the ESP8266 module
+#include <BlynkSimpleEsp32.h> // for blynk cloud stream
 #include "DHT.h" // for the DHT11 temperature and humidity sensor
 
-#define DHTPIN D4 // GPIO2 on NodeMCU - data pin
+#define DHTPIN 4 // GPIO4 on NodeMCU - data pin
 #define DHTTYPE DHT11 // defines the kind of sensor
 
 
-char ssid[] = "ATTSAK-5-EXT";
+char ssid[] = "ATTSAK";
 char pass[] = "angrypear322";
 
 // creates DHT11 and Blynk object instances
@@ -38,7 +38,7 @@ void sendSensorData() {
 void setup() {
   // put your setup code here, to run once:
 
-  Serial.begin(9600);
+  Serial.begin(115200);
   Blynk.begin(BLYNK_AUTH_TOKEN, ssid, pass);
   dht.begin();
   timer.setInterval(2000L, sendSensorData); // Every 2 seconds
